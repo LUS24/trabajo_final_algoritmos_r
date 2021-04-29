@@ -14,5 +14,5 @@ Leonardo U. Spairani
 
 ## Fuentes de datos
 
-- [Appel mobility covid 19](https://covid19.apple.com/mobility)
+- [Apple mobility covid 19](https://covid19.apple.com/mobility)
 - [Api covid 19](https://api.covid19api.com/summary)

@@ -2,11 +2,11 @@
 
 ## Integrantes
 
-Cristian H
-Ignacio Z
-John S
-Maxiliano B
-Leonardo U. Spairani
+- Cristian H
+- Ignacio Z
+- John S
+- Maxiliano B
+- Leonardo U. Spairani
 
 ## Objetivos
 

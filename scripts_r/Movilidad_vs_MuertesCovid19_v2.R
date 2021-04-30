@@ -1,4 +1,20 @@
 
+############################################## Librerias a importar
+check_packages <- function(packages) {
+  if (all(packages %in% rownames(installed.packages()))) {
+    TRUE
+  } else{
+    cat(
+      "Instalar los siguientes packages antes de ejecutar el presente script\n",
+      packages[!(packages %in% rownames(installed.packages()))],
+      "\n"
+    )
+  }
+}
+packages_needed <- c("tidyverse","zoo","patchwork", "hrbrthemes", "rjson", "jsonlite" )
+check_packages(packages_needed)
+
+
 ############################################## Librerias
 suppressWarnings({ 
 library(tidyverse)

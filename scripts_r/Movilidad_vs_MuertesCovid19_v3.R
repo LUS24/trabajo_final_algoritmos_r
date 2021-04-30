@@ -1,19 +1,43 @@
 
 ############################################## Librerias
-suppressWarnings({ 
-library(tidyverse)
-library(zoo)                        
-library(patchwork)
-library(hrbrthemes)
-library(rjson)
-library(jsonlite)
-  
-})
+
+# Package names
+packages <- c("tidyverse", "zoo", "patchwork", "hrbrthemes", "hrbrthemes", "rjson", "jsonlite")
+              
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
 ############################################## Leer Muertes por Covid-19
 # time_series_19-covid-Deaths_archived_0325.csv
 URL <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
-url_archivo  <- paste(URL,"time_series_covid19_deaths_global.csv", sep = "")
+nombre_archivo <- "time_series_covid19_deaths_global.csv"
+url_archivo  <- paste0(URL,nombre_archivo)
+
+# Para implementar el cacheo se me ocurrió colocar en el nombre del archivo la fecha que fue descargado
+# En las subsiguientes descargas antes de descargar el archivo deberia leerse el último archivo descargado
+# usando sort(list.files("../cache/"), decreasing = T) y compararlo con la fecha actual
+# Si la fecha actual es mayor que la fecha que figura en el nombre del archivo se descarga el archivo nuevo
+# Si la fecha actual es igual o menor (núnca debería ser menor) que la fecha que figura en el nombre del archivo
+# Se lee el archivo.
+# También, si la carpeta cache no existe, no tiene archivos o tiene archivos con el formato incorrecto, debería
+# descargar el archivo
+
+
+fecha_actual <- Sys.time()
+
 COVID_19_h  <- read.csv(url_archivo, sep = ",", header = T)
+
+COVID_19_h %>% write_csv(paste0("../cache/", format(fecha_actual, "%Y_%m_%d"), "_", nombre_archivo))
+
+sort(list.files("../cache/"), decreasing = T)
+
 
 
 ############################################## preparo los datos de muertes acumuladas por covid
@@ -147,12 +171,12 @@ g2
 
 mov_color <- rgb(0.2, 0.6, 0.9, 1)
 mu_color <- "#69b3a2"
-coefi <- 4 #Coeficiente utilizado para llevar a escala a la variable con el eje Y
+coeficiente_g3 <- 4 #Coeficiente utilizado para llevar a escala a la variable con el eje Y
 
 g3 <-  ggplot(datos[-which.max(datos$muertes_diarias),], aes(x=fecha)) +
   geom_line( aes(y= movilidad), size=0.75, color=mov_color) + 
-  geom_line( aes(y= muertes_diarias/coefi), size=0.75, color=mu_color) +
-  scale_y_continuous(name = "Movilidad (%)",sec.axis = sec_axis(~.*coefi, name="Muertes diarias por Covid-19")) + 
+  geom_line( aes(y= muertes_diarias/coeficiente_g3), size=0.75, color=mu_color) +
+  scale_y_continuous(name = "Movilidad (%)",sec.axis = sec_axis(~.*coeficiente_g3, name="Muertes diarias por Covid-19")) + 
   theme_bw() +
   theme(axis.title.y = element_text(color = mov_color, size=13),
         axis.title.y.right = element_text(color = mu_color, size=13)) +

@@ -1,0 +1,39 @@
+---
+title: "Análisis de la relación entre movilidad y muertes por COVID-19 en Argentina"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+library(flexdashboard)
+
+source("../scripts_r/Movilidad_vs_MuertesCovid19_v3.R")
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+g1
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+g2
+```
+
+### Chart C
+
+```{r}
+g3
+```
+

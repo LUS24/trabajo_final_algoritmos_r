@@ -1,0 +1,31 @@
+---
+title: "Análisis de la relación entre movilidad y muertes por COVID-19 en Argentina"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+    source_code: embed
+    social: menu
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+### Movilidad vs muertes acumuladas
+
+```{r}
+mov_vs_muertes_acum
+```
+
+### Movilidad vs muertes diarias
+
+```{r}
+mov_vs_muertes_diarias
+```
+
+### Muertes diarias agrupadas por mes
+
+```{r}
+boxplot_muertes_diarias_por_mes
+```
+

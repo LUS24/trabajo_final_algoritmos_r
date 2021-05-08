@@ -6,7 +6,7 @@
 - [Ignacio Zanelli](https://github.com/Z1D2694)
 - [John Sandoval](https://github.com/john30sg)
 - Maximiliano B
-- Sebastián S
+- [Sebastián Spena](https://github.com/TWM-dark)
 - [Leonardo U. Spairani](https://github.com/LUS24)
 
 ## Objetivos

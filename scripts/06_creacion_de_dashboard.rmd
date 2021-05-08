@@ -11,6 +11,9 @@ output:
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
+Row {.tabset .tabset-fade}
+-------------------------------------
+
 ### Movilidad vs muertes acumuladas
 
 ```{r}
@@ -27,5 +30,11 @@ mov_vs_muertes_diarias
 
 ```{r}
 boxplot_muertes_diarias_por_mes
+```
+
+### Tabla de datos
+
+```{r}
+tabla_dinamica_argentina
 ```
 

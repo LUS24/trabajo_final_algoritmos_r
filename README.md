@@ -3,7 +3,7 @@
 ## Integrantes
 
 - [Cristian Herrera](https://github.com/cristianh91)
-- [Ignacio Zanelli](https://github.com/cristianh91)
+- [Ignacio Zanelli](https://github.com/Z1D2694)
 - [John Sandoval](https://github.com/john30sg)
 - Maximiliano B
 - Sebastián S

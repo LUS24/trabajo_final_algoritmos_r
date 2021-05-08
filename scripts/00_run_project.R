@@ -13,3 +13,5 @@ run_project <- function(){
 }
 
 run_project()
+
+file.show(file.path("..", "reportes", "covid_2019_muertes_movi_dashboard.html"))

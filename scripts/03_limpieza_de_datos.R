@@ -37,7 +37,10 @@ datos <- merge(argentina_deaths,argentina_mobility, by = "fecha")
 colnames(datos) <- c("fecha","muertes_covid19", "movilidad")
 
 ############################################## Calculo de las muertes por día (por diferencia)
-datos$muertes_diarias <- datos$muertes_covid19 - lag(datos$muertes_covid19)
+datos$muertes_diarias <- datos$muertes_covid19 - lag(datos$muertes_covid19, n = 1)
+
+# TODO: Calcular diferencia también por diferencia de logaritmos para tener una aproximación a la tasa de
+# Crecimiento
 
 ############################################## Lidiando con datos faltantes
 # sum(is.na(datos)) # N° de NAs en el set de datos
@@ -58,8 +61,10 @@ datos$muertes_diarias[is.na(datos$muertes_diarias)] <- 0
 # 3351 muertes en un mismo día, esto se debió a que se cargaron datos de varias semanas
 # Nota periodística: https://www.infobae.com/sociedad/2020/10/02/coronavirus-fueron-cargados-los-mas-de-3000-muertos-de-buenos-aires-y-argentina-marco-la-mayor-cantidad-de-fallecidos-por-millon-de-habitantes-en-un-dia/
 
+# TODO: se distribuye los valores del outlier en los días de 3 semanas anteriores
+
 datos <- datos %>% 
-  filter(muertes_diarias != max(muertes_diarias))
+  filter(muertes_diarias != max(muertes_diarias, na.rm = T))
 
 ############################################## Se guardan los datos limpios
 dir.create(file.path("..", "datos", "limpios"),recursive = TRUE)

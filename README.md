@@ -5,7 +5,7 @@
 - [Cristian Herrera](https://github.com/cristianh91)
 - [Ignacio Zanelli](https://github.com/cristianh91)
 - [John Sandoval](https://github.com/john30sg)
-- Maxiliano B
+- Maximiliano B
 - Sebastián S
 - [Leonardo U. Spairani](https://github.com/LUS24)
 

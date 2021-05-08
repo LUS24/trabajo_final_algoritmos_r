@@ -62,3 +62,24 @@ boxplot_muertes_diarias_por_mes <-
     labs(title="Muertes diarias acumuladas por mes", x= "", y="Muertes diarias")
 
 boxplot_muertes_diarias_por_mes <- ggplotly(boxplot_muertes_diarias_por_mes)
+
+# Tabla dinámica
+
+tabla_dinamica_argentina <- 
+  datos_argentina %>%
+    datatable(rownames = FALSE,
+              colnames = c('Fecha', 'Muertes Acumuladas', 'Movilidad','Muertes Diarias'),
+  
+              extensions = 'Buttons',
+  
+              filter     = "top",
+  
+              class      = "display compact cell-border",
+              caption    = htmltools::tags$caption(
+                style = 'caption-side: top; text-align: center; color:blue; font-size:20px; font-style:bold',
+                '',
+                htmltools::em('Evolución del número de muertos y la movilidad en Argentina.')),
+              options = list(dom = 'Blfrtip',
+                             buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                             lengthMenu = list(c(25,50,75,-1),
+                                               c(25,50,75,"All"))))

@@ -2,11 +2,12 @@
 
 ## Integrantes
 
-- Cristian H
-- Ignacio Z
-- John S
+- [Cristian Herrera](https://github.com/cristianh91)
+- [Ignacio Zanelli](https://github.com/cristianh91)
+- [John Sandoval](https://github.com/john30sg)
 - Maxiliano B
-- Leonardo U. Spairani
+- Sebastián Spena
+- [Leonardo U. Spairani](https://github.com/LUS24)
 
 ## Objetivos
 
